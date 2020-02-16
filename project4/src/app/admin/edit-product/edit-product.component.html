@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>Edit Product</h2>
+<form [formGroup]="editProductForm" (ngSubmit)="save(data.editedData._id)">
+  <mat-dialog-content class="mat-typography">
+    <div class="form-body">
+      <mat-form-field appearance="outline" class="justifier">
+        <mat-label>Name</mat-label>
+        <input
+          class="form-input"
+          matInput
+          placeholder="{{ data.editedData.productName }}"
+          formControlName="name"
+          [value]="data.editedData.productName"
+        />
+        <!-- <mat-error *ngIf="editProductForm.controls['name'].errors?.required"
+          >Product name is required.</mat-error
+        >
+      </mat-form-field> -->
+
+        <!-- <mat-form-field appearance="outline" class="justifier">
+        <mat-label>Category</mat-label>
+        <mat-select placeholder="{{ data.categories[data.editedData.categoryId].name }}"
+                    formControlName="categoryId">
+          <mat-option *ngFor="let item of data.categories | keyvalue" [value]="data.categories[item.key]._id">
+            {{ data.categories[item.key].name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="editProductForm.controls['categoryId'].errors?.required">Category is required.</mat-error>-->
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="justifier">
+        <mat-label>Price</mat-label>
+        <input
+          class="form-input"
+          matInput
+          type="number"
+          [min]="0"
+          placeholder="{{ data.editedData.price | currency: 'USD' }}"
+          formControlName="price"
+          [value]="data.editedData.price"
+        />
+        <!-- <mat-error *ngIf="editProductForm.controls['price'].errors?.required"
+          >Price is required.</mat-error
+        > -->
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="justifier">
+        <mat-label>Image URL</mat-label>
+        <input
+          class="form-input"
+          matInput
+          placeholder="{{ data.editedData.picture }}"
+          formControlName="picture"
+          [value]="data.editedData.picture"
+        />
+        <!-- <mat-error *ngIf="editProductForm.controls['picture'].errors?.required"
+          >Image URL is required.</mat-error
+        > -->
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <div>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="submit">
+      Save Changes
+    </button>
+  </div>
+</form>

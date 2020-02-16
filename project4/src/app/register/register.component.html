@@ -1,0 +1,87 @@
+<div>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form
+        (ngSubmit)="firstSubmit(stepper)"
+        [formGroup]="firstFormGroup"
+        class="example-form"
+      >
+        <div>
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="userName"
+              placeholder="User Name"
+              value=""
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="password"
+              placeholder="Password"
+              type="password"
+            />
+          </mat-form-field>
+        </div>
+
+        <button mat-button (click)="goForward(stepper)">Next Step</button>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form (ngSubmit)="secondSubmit()" [formGroup]="secondFormGroup">
+        <div>
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="city"
+              placeholder="City"
+              value=""
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="street"
+              placeholder="Street"
+              value=""
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="firstName"
+              placeholder="First Name"
+              value=""
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="lastName"
+              placeholder="Last Name"
+              value=""
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+
+        <button type="submit" mat-button>Done</button>
+
+        <button mat-button matStepperPrevious>Back</button>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

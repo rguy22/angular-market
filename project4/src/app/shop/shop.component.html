@@ -1,0 +1,69 @@
+<mat-drawer-container>
+  <div class="container">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Open/Close Cart
+    </button>
+  </div>
+  <div class="container">
+    <div
+      fxLayout="row wrap"
+      fxLayoutAlign="start"
+      fxLayoutGap="5px"
+      fxLayoutGap.xs="column"
+    >
+      <mat-card class="product" *ngFor="let product of products">
+        <div fxLayoutAlign="center">
+          <h4>{{ product.productName }}</h4>
+        </div>
+        <div fxLayoutAlign="center">
+          <img class="img" [src]="product.picture" [alt]="product.picture" />
+        </div>
+
+        <div fxLayoutAlign="center">
+          <span>{{ product.price | currency: USD }}</span>
+        </div>
+        <div fxLayoutAlign="center">
+          <button mat-raised-button (click)="openDialog(product)">
+            Buy Now
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <mat-drawer #drawer class="sidenav" mode="side" [(opened)]="sidebarOpen">
+    <h3>Your Cart</h3>
+    <div *ngIf="!this.cartProducts">
+      You Have no products in your cart
+    </div>
+    <div *ngIf="this.cartProducts">
+      <button mat-button routerLink="/cart">
+        PAY NOW
+      </button>
+      <p>
+        Total: <span>{{ totalPrice | currency: "USD" }}</span>
+      </p>
+      <div class="row" *ngFor="let cartProduct of cartProducts">
+        <ul class="col-md-5 to-center" style="text-align: center">
+          <li>
+            <div>
+              <div class="col-md-5 to-center cartItem">
+                <img [src]="cartProduct.picture" alt="..." />
+              </div>
+              <span style="font-weight: bolder"
+                >{{ cartProduct.quantity }}
+
+                {{ cartProduct.name }}
+
+                {{ cartProduct.price * cartProduct.quantity | currency: "USD" }}
+              </span>
+            </div>
+            <button mat-button (click)="deleteProductCart(cartProduct)">
+              DELETE
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </mat-drawer>
+</mat-drawer-container>

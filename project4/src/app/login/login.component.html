@@ -1,0 +1,39 @@
+<div>
+  <mat-card class="example-card">
+    <form
+      *ngIf="loginForm"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      class="example-form"
+    >
+      <div>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="User Name"
+            value=""
+            type="text"
+            formControlName="userName"
+          />
+        </mat-form-field>
+        
+      </div>
+      <div>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Password"
+            type="password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </div>
+
+      <button type="submit" mat-button>Login</button>
+      <p>
+        Dont Have An Account?
+        <button mat-button routerLink="/register">Register</button>
+      </p>
+    </form>
+  </mat-card>
+</div>

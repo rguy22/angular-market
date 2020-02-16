@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{ data.product.productName }}</h1>
+<div mat-dialog-content>
+  <p>How Many?</p>
+  <mat-form-field>
+    <input type="number" matInput [(ngModel)]="data.quantity" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.quantity" cdkFocusInitial>
+    Ok
+  </button>
+</div>

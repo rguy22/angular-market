@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button routerLink="">My Store!</button>
+    <span class="spacer"></span>
+    <button
+      *ngIf="usersService.loggedUser && usersService.userData.admin"
+      mat-button
+      routerLink="admin"
+    >
+      Admin
+    </button>
+    <button *ngIf="usersService.loggedUser" mat-button routerLink="shop">
+      Shop
+    </button>
+
+    <button *ngIf="usersService.loggedUser" mat-button (click)="onLogOut()">
+      Log Out
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

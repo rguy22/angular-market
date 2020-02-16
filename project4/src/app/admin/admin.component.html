@@ -1,0 +1,31 @@
+<div class="container">
+  <button type="button" mat-button (click)="openAddDialog()">
+    Add New Product
+  </button>
+</div>
+<div class="container">
+  <div
+    fxLayout="row wrap"
+    fxLayoutAlign="start"
+    fxLayoutGap="5px"
+    fxLayoutGap.xs="column"
+  >
+    <mat-card class="product" *ngFor="let product of products">
+      <div fxLayoutAlign="center">
+        <h4>{{ product.productName }}</h4>
+      </div>
+      <div fxLayoutAlign="center">
+        <img class="img" [src]="product.picture" [alt]="product.picture" />
+      </div>
+
+      <div fxLayoutAlign="center">
+        <span>{{ product.price | currency: USD }}</span>
+      </div>
+      <div fxLayoutAlign="center">
+        <button mat-raised-button (click)="openEditDialog(product)">
+          Edit Product
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

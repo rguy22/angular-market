@@ -1,0 +1,16 @@
+<div class="container" fxLayout="row">
+  <div fxFlex="33">
+    <app-login *ngIf="!usersService.loggedUser; else sayHi"></app-login>
+  </div>
+  <ng-template #sayHi>
+    <div>
+      <h2>Wellcome, {{ usersService.userData.userName }}</h2>
+    </div>
+  </ng-template>
+  <div fxFlex="33">
+    <app-about></app-about>
+  </div>
+  <div fxFlex="33">
+    <app-information></app-information>
+  </div>
+</div>

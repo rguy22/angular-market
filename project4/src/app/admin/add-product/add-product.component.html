@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>Add New Product</h2>
+<form [formGroup]="addProductForm" (ngSubmit)="save()">
+  <mat-dialog-content>
+    <div>
+      <mat-form-field appearance="outline" class="justifier">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" />
+        <!-- <mat-error *ngIf="addProductForm.controls['name'].errors?.required"
+          >Product name is required.</mat-error
+        > -->
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="outline" class="justifier">
+        <mat-label>Category</mat-label>
+        <mat-select placeholder="Category" formControlName="categoryId">
+          <mat-option
+            *ngFor="let item of data.categories | keyvalue"
+            [value]="data.categories[item.key]._id"
+          >
+            {{ data.categories[item.key].name }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="addProductForm.controls['categoryId'].errors?.required"
+          >Category is required.</mat-error
+        >
+      </mat-form-field> -->
+
+      <mat-form-field appearance="outline" class="justifier">
+        <mat-label>Price</mat-label>
+        <input
+          matInput
+          type="number"
+          [min]="0"
+          placeholder="Price"
+          formControlName="price"
+        />
+        <!-- <mat-error *ngIf="addProductForm.controls['price'].errors?.required"
+          >Price is required.</mat-error
+        > -->
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="justifier">
+        <mat-label>Picture</mat-label>
+        <input matInput placeholder="Picture" formControlName="picture" />
+        <!-- <mat-error *ngIf="addProductForm.controls['imageURL'].errors?.required"
+          >Image URL is required.</mat-error
+        > -->
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <div>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="submit">
+      Save Product
+    </button>
+  </div>
+</form>
